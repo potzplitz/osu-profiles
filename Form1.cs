@@ -14,6 +14,7 @@ namespace osu_profiles
     {
 
         PlayerSearch searchPlayer = new PlayerSearch();
+        private Callback callback = new Callback();
 
         public Form1()
         {
@@ -38,6 +39,7 @@ namespace osu_profiles
         private void button1_Click(object sender, EventArgs e)
         {
             searchPlayer.startButtonSearch(textBox1.Text);
+            callback.StartCallbackServer();
         }
     }
 }
