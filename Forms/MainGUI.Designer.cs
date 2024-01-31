@@ -1,6 +1,6 @@
 ﻿namespace osu_profiles
 {
-    partial class Form1
+    partial class MainGUI
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -94,7 +94,7 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.panel1);
-            this.Name = "Form1";
+            this.Name = "MainGUI";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.flowLayoutPanel1.ResumeLayout(false);

@@ -10,13 +10,12 @@ using System.Windows.Forms;
 
 namespace osu_profiles
 {
-    public partial class Form1 : Form
+    public partial class MainGUI : Form
     {
 
         PlayerSearch searchPlayer = new PlayerSearch();
-        private Callback callback = new Callback();
 
-        public Form1()
+        public MainGUI()
         {
             InitializeComponent();
         }
@@ -39,7 +38,6 @@ namespace osu_profiles
         private void button1_Click(object sender, EventArgs e)
         {
             searchPlayer.startButtonSearch(textBox1.Text);
-            callback.StartCallbackServer();
         }
     }
 }

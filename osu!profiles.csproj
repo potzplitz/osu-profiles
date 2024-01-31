@@ -46,21 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Callback.cs" />
-    <Compile Include="CheckAuth.cs" />
-    <Compile Include="Constants.cs" />
-    <Compile Include="oauth2.cs" />
-    <Compile Include="PlayerSearch.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="ApiAccess\AccessMe.cs" />
+    <Compile Include="Forms\MainGUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\MainGUI.Designer.cs">
+      <DependentUpon>MainGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Main\Program.cs" />
+    <Compile Include="Oauth2\Callback.cs" />
+    <Compile Include="Oauth2\CheckAuth.cs" />
+    <Compile Include="Oauth2\CheckToken.cs" />
+    <Compile Include="Oauth2\GetRefreshToken.cs" />
+    <Compile Include="Oauth2\oauth2.cs" />
+    <Compile Include="Oauth2\RegisterAuth.cs" />
+    <Compile Include="PlayerSearch\PlayerSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MainGUI.resx">
+      <DependentUpon>MainGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -83,6 +86,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+<PackageReference Include="System.Text.Json" Version="6.0.1" />
+<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+
+
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

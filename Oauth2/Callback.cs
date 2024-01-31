@@ -7,7 +7,7 @@ namespace osu_profiles
 {
     public class Callback
     {
-         string authcode;
+       private static string authcode;
         
         public void StartCallbackServer()
         {
@@ -24,8 +24,7 @@ namespace osu_profiles
                 Console.WriteLine($"Server lauscht auf {"localhost"}:{7727}");
 
                 // Warte auf eingehende Verbindungen
-                while (true)
-                {
+           
                     // Akzeptiere eine eingehende Verbindung
                     TcpClient client = listener.AcceptTcpClient();
                     Console.WriteLine("Client verbunden!");
@@ -36,12 +35,28 @@ namespace osu_profiles
                     int bytesRead = stream.Read(buffer, 0, buffer.Length);
                     string receivedData = Encoding.ASCII.GetString(buffer, 0, bytesRead);
                     Console.WriteLine($"Empfangener String: {receivedData}");
+                    
+                    if (receivedData.StartsWith("GET"))
+                    {
+                        // Extrahiere die URL aus der Anforderung
+                        string[] requestParts = receivedData.Split(' ');
+                        string url = requestParts[1];
 
-                    authcode = receivedData;
+                        // Verwende die Uri-Klasse, um den Authorization-Code zu extrahieren
+                        Uri uri = new Uri("http://localhost" + url);
+                        string query = uri.Query;
+                        string[] queryParts = query.Split('=');
+
+                        if (queryParts.Length >= 2 && queryParts[0] == "?code")
+                        {
+                            authcode = queryParts[1];
+                        }
+                    }
 
                     // Schließe die Verbindung
                     client.Close();
-                }
+
+                   
             }
             catch (Exception ex)
             {
@@ -52,6 +67,9 @@ namespace osu_profiles
                 // Beende den Listener
                 listener.Stop();
             }
+
+            oauth2 auth = new oauth2();
+            auth.StartAuthentication();
         }
 
         public string getAuthCode()

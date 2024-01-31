@@ -14,9 +14,12 @@ namespace osu_profiles
         [STAThread]
         static void Main()
         {
+            CheckAuth check = new CheckAuth();
+            check.CheckAuthFiles();
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainGUI());
         }
     }
 }
