@@ -1,11 +1,18 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
+using osu_profiles.ApiStuff;
+using osu_profiles.EditGui;
 
 namespace osu_profiles
 {
     public class CheckAuth
     {
-        public void CheckAuthFiles() // Check if user is authenticated
+        public async void CheckAuthFiles() // Check if user is authenticated
         {
+            int check = 0;
+            
+            
            if (!Directory.Exists("C:\\osu!profiles")) // Check if directory of osu!profiles exists
            {
                Directory.CreateDirectory("C:\\osu!profiles");
@@ -21,12 +28,42 @@ namespace osu_profiles
                File.Create("C:\\osu!profiles\\requesttime.txt");
            }
 
-           if (File.ReadAllText("C:/osu!profiles/requesttime.txt").Length == 0)
+           if (new FileInfo( "C:/osu!profiles/requesttime.txt" ).Length == 0)
            {
                RegisterAuth reg = new RegisterAuth();
                reg.Register();
+               
+               Console.WriteLine("Check failed at requesttime.txt");
+               
+           }
+           else
+           {
+               Console.WriteLine("Check successful at requesttime.txt");
+               check++;
+           }
+           
+           if (new FileInfo( "C:/osu!profiles/auth.txt" ).Length == 0)
+           {
+               RegisterAuth reg = new RegisterAuth();
+               reg.Register();
+              
+               Console.WriteLine("check failed at auth.txt");
+           }
+           else
+           {
+               Console.WriteLine("check successful at auth.txt");
+               check++;
            }
 
+           if (check == 2)
+           {
+               Console.WriteLine("check successful");
+               //GetMeData me = new GetMeData();
+               //await Task.Run(() => me.getMe());
+
+               EditMe edit = new EditMe();
+               edit.Edit();
+           }
         }
     }
 }

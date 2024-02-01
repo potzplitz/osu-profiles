@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiAccess\AccessMe.cs" />
+    <Compile Include="ApiStuff\GetMeData.cs" />
+    <Compile Include="EditGui\EditMe.cs" />
     <Compile Include="Forms\MainGUI.cs">
       <SubType>Form</SubType>
     </Compile>
