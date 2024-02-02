@@ -12,21 +12,18 @@ namespace osu_profiles
         [STAThread]
         static void Main()
         {
-            
-            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
-            
-            CheckAuth auth = new CheckAuth();
-            auth.CheckAuthFiles();
-            
+
+            Main mainGUI = new Main();
+    
+            CheckAuth authChecker = new CheckAuth(mainGUI);
+            authChecker.CheckAuthFiles();
+
             CheckToken token = new CheckToken();
             token.RefreshChecker();
-            
-            Application.Run(new MainGUI());
-            
-            
+
+            Application.Run(mainGUI); // Verwenden Sie die bereits erstellte Instanz von MainGUI
         }
     }
 }

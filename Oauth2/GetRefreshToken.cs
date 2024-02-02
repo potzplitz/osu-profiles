@@ -7,6 +7,7 @@ using System.Net;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
+using osu_profiles.ApiStuff;
 
 namespace osu_profiles
 {
@@ -46,7 +47,9 @@ namespace osu_profiles
                     if (response.IsSuccessStatusCode)
                     {
                         File.WriteAllText("C:/osu!profiles/auth.txt", tokenResponse);
-                        
+                        GetMeData data = new GetMeData();
+                        data.getMe();
+
                     }
                     else
                     {

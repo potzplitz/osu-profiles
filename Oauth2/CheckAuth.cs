@@ -8,6 +8,14 @@ namespace osu_profiles
 {
     public class CheckAuth
     {
+        
+        private Main mainGUI; // Referenz zur MainGUI-Instanz
+
+        public CheckAuth(Main mainGUI)
+        {
+            this.mainGUI = mainGUI;
+        }
+        
         public async void CheckAuthFiles() // Check if user is authenticated
         {
             int check = 0;
@@ -61,8 +69,18 @@ namespace osu_profiles
                //GetMeData me = new GetMeData();
                //await Task.Run(() => me.getMe());
 
-               EditMe edit = new EditMe();
+               int reg = 0;
+
+               if (reg == 1)
+               {
+                   RegisterAuth auth = new RegisterAuth();
+                   auth.Register();
+               }
+               
+               EditMe edit = new EditMe(mainGUI);
                edit.Edit();
+
+
            }
         }
     }

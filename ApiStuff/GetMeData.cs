@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Net;
 using System.Net.Http;
+using System.Threading;
 
 namespace osu_profiles.ApiStuff
 {
@@ -24,13 +26,28 @@ namespace osu_profiles.ApiStuff
                     
                     if (response.IsSuccessStatusCode)
                     {
+                        
+                        
                     
                         string responseBody = await response.Content.ReadAsStringAsync();
                         MeString = responseBody;
+                        
+                        var username = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(responseBody);
+                        string tornusername = username.username;
+                        
+                       // Console.WriteLine(responseBody);
+                       
                     }
                     else
                     {
-                        Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                        if (response.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            Console.WriteLine("nicht autorisiert");
+                            GetRefreshToken refresh = new GetRefreshToken();
+                            refresh.RefreshToken();
+                            
+                            Thread.Sleep(1500);
+                        }
                     }
                 
 

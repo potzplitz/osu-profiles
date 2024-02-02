@@ -49,11 +49,11 @@
     <Compile Include="ApiAccess\AccessMe.cs" />
     <Compile Include="ApiStuff\GetMeData.cs" />
     <Compile Include="EditGui\EditMe.cs" />
-    <Compile Include="Forms\MainGUI.cs">
+    <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MainGUI.Designer.cs">
-      <DependentUpon>MainGUI.cs</DependentUpon>
+    <Compile Include="Forms\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\Program.cs" />
     <Compile Include="Oauth2\Callback.cs" />
@@ -64,8 +64,8 @@
     <Compile Include="Oauth2\RegisterAuth.cs" />
     <Compile Include="PlayerSearch\PlayerSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\MainGUI.resx">
-      <DependentUpon>MainGUI.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
