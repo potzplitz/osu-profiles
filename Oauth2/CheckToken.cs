@@ -15,6 +15,11 @@ namespace osu_profiles
                 GetRefreshToken refresh = new GetRefreshToken();
                 refresh.RefreshToken();
            }
+            else
+            {
+                Playersearch search = new Playersearch();
+                search.InitializeComponent();
+            }
         }
     }
 }
