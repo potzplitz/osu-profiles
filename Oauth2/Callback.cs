@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Windows.Forms;
 
 namespace osu_profiles
 {
@@ -52,6 +54,23 @@ namespace osu_profiles
                             authcode = queryParts[1];
                         }
                     }
+
+                    Directory.SetCurrentDirectory(@"C:\Users\Schil_JanR\source\repos\osu!profiles\");
+                    string responseString = File.ReadAllText(@"html\authSuccess.html");
+                    Console.WriteLine(responseString);
+                    byte[] buffer2 = Encoding.UTF8.GetBytes(responseString);
+
+                    string httpResponse = "HTTP/1.1 200 OK\r\n" +
+                                          "Content-Length: " + buffer2.Length + "\r\n" + // Verwenden Sie buffer2.Length für Content-Length
+                                          "Content-Type: text/html; charset=UTF-8\r\n" +
+                                          "\r\n";
+
+                    byte[] httpResponseBytes = Encoding.UTF8.GetBytes(httpResponse);
+                    
+                    stream.Write(httpResponseBytes, 0, httpResponseBytes.Length);
+                    stream.Write(buffer2, 0, buffer2.Length);
+
+
 
                     // Schließe die Verbindung
                     client.Close();

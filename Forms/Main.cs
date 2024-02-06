@@ -32,10 +32,13 @@ namespace osu_profiles
 
         private void ButtonAuthorize_Click(object sender, EventArgs e)
         {
-            CheckToken token = new CheckToken();
-            token.RefreshChecker();
-            
-            
+            this.Hide();
+            Playersearch search = new Playersearch();
+            search.ShowDialog();
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
             
         }
     }

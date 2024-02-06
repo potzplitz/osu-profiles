@@ -17,8 +17,7 @@ namespace osu_profiles
            }
             else
             {
-                Playersearch search = new Playersearch();
-                search.InitializeComponent();
+                
             }
         }
     }

@@ -55,6 +55,9 @@ namespace osu_profiles
                     {
                         Console.WriteLine("Fehler beim Anfordern des Zugriffstokens.");
                        Console.WriteLine(response.ToString());
+                       
+                       RegisterAuth auth = new RegisterAuth();
+                       auth.Register();
                     }
                 }
                 catch (HttpRequestException ex)

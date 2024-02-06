@@ -70,9 +70,7 @@
     <Compile Include="Oauth2\RegisterAuth.cs" />
     <Compile Include="PlayerSearch\PlayerSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main.resx" />
     <EmbeddedResource Include="Forms\Playersearch.resx">
       <DependentUpon>Playersearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,6 +99,9 @@
 <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 
 
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="html\authSuccess.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

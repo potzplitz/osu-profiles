@@ -77,6 +77,8 @@ namespace osu_profiles
                    auth.Register();
                }
                
+               
+               
                EditMe edit = new EditMe(mainGUI);
                edit.Edit();
 

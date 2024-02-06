@@ -24,11 +24,17 @@ namespace osu_profiles.EditGui
             
             Thread.Sleep(2000); // temporärer fix, kommt weg wenn das mit dem Wait() funktioniert
 
-            var finishedToken = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(data.GetMeDataString());
-
-            mainGUI.authorized.Text = finishedToken.username;
-            mainGUI.rank.Text = "#" + finishedToken.rank_history.data[89];
-            ;
+            if (!(data.GetMeDataString() == null))
+            {
+                var finishedToken = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(data.GetMeDataString());
+            
+                mainGUI.authorized.Text = finishedToken.username;
+                mainGUI.rank.Text = "#" + finishedToken.rank_history.data[89];
+            }
+            else
+            {
+                mainGUI.authorized.Text = "fehler";
+            }
         }
     }
 }

@@ -41,17 +41,19 @@ namespace osu_profiles
             // authorized
             // 
             this.authorized.Location = new System.Drawing.Point(0, 0);
+            this.authorized.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.authorized.Name = "authorized";
-            this.authorized.Size = new System.Drawing.Size(111, 15);
+            this.authorized.Size = new System.Drawing.Size(148, 18);
             this.authorized.TabIndex = 0;
             this.authorized.Text = "nicht autorisiert";
             this.authorized.Click += new System.EventHandler(this.authorized_Click);
             // 
             // ButtonAuthorize
             // 
-            this.ButtonAuthorize.Location = new System.Drawing.Point(125, 84);
+            this.ButtonAuthorize.Location = new System.Drawing.Point(167, 103);
+            this.ButtonAuthorize.Margin = new System.Windows.Forms.Padding(4);
             this.ButtonAuthorize.Name = "ButtonAuthorize";
-            this.ButtonAuthorize.Size = new System.Drawing.Size(255, 44);
+            this.ButtonAuthorize.Size = new System.Drawing.Size(340, 54);
             this.ButtonAuthorize.TabIndex = 1;
             this.ButtonAuthorize.Text = "Autorisieren";
             this.ButtonAuthorize.UseVisualStyleBackColor = true;
@@ -59,9 +61,10 @@ namespace osu_profiles
             // 
             // rank
             // 
-            this.rank.Location = new System.Drawing.Point(0, 15);
+            this.rank.Location = new System.Drawing.Point(0, 18);
+            this.rank.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.rank.Name = "rank";
-            this.rank.Size = new System.Drawing.Size(82, 15);
+            this.rank.Size = new System.Drawing.Size(109, 18);
             this.rank.TabIndex = 2;
             this.rank.Text = "Rang";
             this.rank.Click += new System.EventHandler(this.rank_Click);
@@ -73,19 +76,22 @@ namespace osu_profiles
             this.panel1.Controls.Add(this.authorized);
             this.panel1.Controls.Add(this.rank);
             this.panel1.Location = new System.Drawing.Point(1, 1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(93, 30);
+            this.panel1.Size = new System.Drawing.Size(123, 36);
             this.panel1.TabIndex = 3;
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(501, 158);
+            this.ClientSize = new System.Drawing.Size(668, 194);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ButtonAuthorize);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Main";
             this.Text = "Autorisieren";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
         }
