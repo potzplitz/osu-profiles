@@ -19,24 +19,19 @@ namespace osu_profiles.EditGui
         {
 
             GetMeData data = new GetMeData();
-            Console.WriteLine("waiting");
-            data.getMe().Wait();
-            
-            
             
             string apiresponse = data.GetMeDataString();
             
             if (apiresponse != null)
             {
                 var finishedToken = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(data.GetMeDataString());
-                    
-                    Console.WriteLine("test");
 
                 mainGUI.meName.Text = finishedToken.username;
                 mainGUI.meRank.Text = "#" + finishedToken.rank_history.data[89];
             }
             else
             {
+                mainGUI.meName.Text = "error";
             }
         }
     }

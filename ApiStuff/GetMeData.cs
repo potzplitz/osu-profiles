@@ -12,7 +12,7 @@ namespace osu_profiles.ApiStuff
     public class GetMeData
     {
         private string MeString;
-        public async Task getMe()
+        public async void getMe()
         {
             var finishedToken = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(File.ReadAllText("C:/osu!profiles/auth.txt"));
             string access_token = finishedToken.access_token;
