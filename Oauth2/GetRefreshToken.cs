@@ -48,7 +48,7 @@ namespace osu_profiles
                     {
                         File.WriteAllText("C:/osu!profiles/auth.txt", tokenResponse);
                         GetMeData data = new GetMeData();
-                        data.getMe();
+                      //  data.getMe();
 
                     }
                     else

@@ -49,6 +49,7 @@
     <Compile Include="ApiAccess\AccessMe.cs" />
     <Compile Include="ApiStuff\GetMeData.cs" />
     <Compile Include="EditGui\EditMe.cs" />
+    <Compile Include="EditGui\EditPlayersearch.cs" />
     <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>

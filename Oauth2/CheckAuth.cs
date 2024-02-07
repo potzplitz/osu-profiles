@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using osu_profiles.ApiStuff;
 using osu_profiles.EditGui;
@@ -38,11 +39,15 @@ namespace osu_profiles
 
            if (new FileInfo( "C:/osu!profiles/requesttime.txt" ).Length == 0)
            {
-               RegisterAuth reg = new RegisterAuth();
-               reg.Register();
+               DateTimeOffset currentTime = DateTimeOffset.UtcNow;
+               long unixTimestamp = currentTime.ToUnixTimeSeconds();
+
+              // File.Create("C:\\osu!profiles\\requesttime.txt");
+              
+               File.WriteAllText("C:\\osu!profiles\\requesttime.txt",unixTimestamp + "");
                
                Console.WriteLine("Check failed at requesttime.txt");
-               
+
            }
            else
            {
@@ -52,10 +57,11 @@ namespace osu_profiles
            
            if (new FileInfo( "C:/osu!profiles/auth.txt" ).Length == 0)
            {
-               RegisterAuth reg = new RegisterAuth();
-               reg.Register();
               
                Console.WriteLine("check failed at auth.txt");
+               
+               RegisterAuth auth = new RegisterAuth();
+               auth.Register();
            }
            else
            {
