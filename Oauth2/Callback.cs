@@ -13,25 +13,19 @@ namespace osu_profiles
         
         public void StartCallbackServer()
         {
-            IPAddress ipAddress = IPAddress.Parse("127.0.0.1"); // Ändere die IP-Adresse nach Bedarf
+            IPAddress ipAddress = IPAddress.Parse("127.0.0.1");
             int port = 7727; // Ändere den Port nach Bedarf
-
-            // Erstelle eine TCP/IP-Listener-Socket
+            
             TcpListener listener = new TcpListener(ipAddress, port);
 
             try
             {
-                // Starte den Listener
                 listener.Start();
                 Console.WriteLine($"Server lauscht auf {"localhost"}:{7727}");
-
-                // Warte auf eingehende Verbindungen
-           
-                    // Akzeptiere eine eingehende Verbindung
+                
                     TcpClient client = listener.AcceptTcpClient();
                     Console.WriteLine("Client verbunden!");
-
-                    // Lese den empfangenen String
+                    
                     NetworkStream stream = client.GetStream();
                     byte[] buffer = new byte[1024];
                     int bytesRead = stream.Read(buffer, 0, buffer.Length);
@@ -40,11 +34,9 @@ namespace osu_profiles
                     
                     if (receivedData.StartsWith("GET"))
                     {
-                        // Extrahiere die URL aus der Anforderung
                         string[] requestParts = receivedData.Split(' ');
                         string url = requestParts[1];
-
-                        // Verwende die Uri-Klasse, um den Authorization-Code zu extrahieren
+                        
                         Uri uri = new Uri("http://localhost" + url);
                         string query = uri.Query;
                         string[] queryParts = query.Split('=');
@@ -61,7 +53,7 @@ namespace osu_profiles
                     byte[] buffer2 = Encoding.UTF8.GetBytes(responseString);
 
                     string httpResponse = "HTTP/1.1 200 OK\r\n" +
-                                          "Content-Length: " + buffer2.Length + "\r\n" + // Verwenden Sie buffer2.Length für Content-Length
+                                          "Content-Length: " + buffer2.Length + "\r\n" +
                                           "Content-Type: text/html; charset=UTF-8\r\n" +
                                           "\r\n";
 
@@ -71,8 +63,7 @@ namespace osu_profiles
                     stream.Write(buffer2, 0, buffer2.Length);
 
 
-
-                    // Schließe die Verbindung
+                    
                     client.Close();
 
                    
@@ -83,7 +74,6 @@ namespace osu_profiles
             }
             finally
             {
-                // Beende den Listener
                 listener.Stop();
             }
 

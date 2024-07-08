@@ -34,7 +34,7 @@ namespace osu_profiles
                     { "client_secret", clientSecret },
                     { "grant_type", "refresh_token" },
                     { "refresh_token", refreshCode },
-                    { "scope", "public" } // Anpassen je nach benötigtem Scope
+                    { "scope", "identify public" } // Anpassen je nach benötigtem Scope
                 };
 
                 var content = new FormUrlEncodedContent(tokenRequest);
@@ -43,11 +43,17 @@ namespace osu_profiles
                 {
                     var response = await client.PostAsync(tokenUrl, content);
                     var tokenResponse = await response.Content.ReadAsStringAsync();
+                    
+                    DateTimeOffset currentTime = DateTimeOffset.UtcNow;
+                    long unixTimestamp = currentTime.ToUnixTimeSeconds();
 
                     if (response.IsSuccessStatusCode)
                     {
                         File.WriteAllText("C:/osu!profiles/auth.txt", tokenResponse);
+                        File.WriteAllText("C:/osu!profiles/requesttime.txt", unixTimestamp + "");
                         GetMeData data = new GetMeData();
+                        
+                        
                       //  data.getMe();
 
                     }
